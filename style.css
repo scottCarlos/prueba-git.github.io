@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
-.contenedor {
+.contenedor1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,8 +13,8 @@
 }
 .circulo {
     border-radius: 100%;
-    width: 250px;
-    height: 250px;
+    max-width: 250px;
+    max-height: 250px;
     padding: 50px;
     box-shadow: 1px 1px 20px #fff;
     cursor: pointer;
@@ -23,6 +23,42 @@
 .circulo:hover {
     transform: scale(110%);
 }
-.word-image {
+.world-image {
     width: 100%;
+    filter: brightness(1.1);
+    mix-blend-mode: multiply;
+}
+.contenedor2 {
+    margin: 60px auto;
+    background-image: url(img/fondo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 850px;
+    position: relative;
+    overflow: hidden;
+}
+.nave {
+    width: 120px;
+    position: absolute;
+    animation-name: nave-espacial;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+@keyframes nave-espacial {
+    0% {
+        transform: translateY(177px);
+    }
+    25% {
+        transform: translateY(-30px) translateX(50px) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-300px) translateX(507px) rotate(90deg);
+    }
+    75% {
+        transform: translateY(0) translateX(300px) rotate(135deg);
+    }
+    100% {
+        transform: translateY(177px);
+    }
 }
