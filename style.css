@@ -4,11 +4,31 @@
     box-sizing: border-box;
 }
 .contenedor1 {
+    background-color: #123;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    align-items: center;
+    padding-top: 70px;
+}
+.form-circles {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#button {
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    background-color: rgb(80, 114, 148);
+    cursor: pointer;
+}
+.contenedor-circle {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 80px;
-    background-color: #123;
     padding: 50px 0;
 }
 .circulo {

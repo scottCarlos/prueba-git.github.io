@@ -1,4 +1,5 @@
-const container = document.querySelector(".contenedor1");
+const boton = document.getElementById("button");
+const container = document.querySelector(".contenedor-circle");
 const fragmento = document.createDocumentFragment();
 
 const colorHexadecimal = () => {
@@ -13,22 +14,32 @@ const colorHexadecimal = () => {
     return color;
 }
 
+boton.addEventListener('click', () => {
+    if (container.hasChildNodes() === false) {
+        let valor = boton.previousElementSibling.value;
+        for (let i = 0; i < valor; i++) {
+            var div = document.createElement("DIV");
+            div.classList.add("circulo");
+            var color = colorHexadecimal();
+            div.style.backgroundColor = `#${color}`;    
+            var image = document.createElement("IMG");
+            image.setAttribute("src", "img/mundo.png");
+            image.classList.add("world-image");
+            div.appendChild(image);
+            fragmento.appendChild(div);
+        }
+        container.appendChild(fragmento);
+        const circulos = document.querySelectorAll(".circulo")
+        circulos.forEach((elemento, indice) => {
+            elemento.addEventListener('click', () => {
+                alert(`Este es el elemento ${indice+1}`);
+            })
+        })
+    }   else {
+        container.childNodes.forEach((elemento) => {
+            container.removeChild(elemento);
+        })
 
-for (let i = 0; i < 5; i++) {
-    let div = document.createElement("DIV");
-    div.classList.add("circulo");
-    let color = colorHexadecimal();
-    div.style.backgroundColor = `#${color}`;    
-    let image = document.createElement("IMG");
-    image.setAttribute("src", "img/mundo.png");
-    image.classList.add("world-image");
-    div.appendChild(image);
-    fragmento.appendChild(div);
-}
-container.appendChild(fragmento);
-const circulos = document.querySelectorAll (".circulo");
-circulos.forEach((elemento, indice) => {
-    elemento.addEventListener('click', () => {
-        alert (`Este es el elemento ${indice+1}`);
-    })
+    }
 })
+
