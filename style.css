@@ -12,9 +12,24 @@
     padding-top: 70px;
 }
 .form-circles {
+    border: 1px solid #fff;
+    background-color: black;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    color: #fff;
+}
+#input {
+    margin: auto;
+    background-color: transparent;
+    color: #fff;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    text-align: center;
 }
 #button {
     width: 200px;
@@ -23,6 +38,12 @@
     border: none;
     background-color: rgb(80, 114, 148);
     cursor: pointer;
+    color: #fff;
+    transition: background .3s ,color .3s;
+}
+#button:hover {
+    background-color: rgb(71, 146, 221);
+    color: black;
 }
 .contenedor-circle {
     display: flex;
@@ -45,8 +66,7 @@
 }
 .world-image {
     width: 100%;
-    filter: brightness(1.1);
-    mix-blend-mode: multiply;
+
 }
 .contenedor2 {
     margin: 60px auto;
