@@ -84,21 +84,25 @@
     animation-name: nave-espacial;
     animation-duration: 7s;
     animation-iteration-count: infinite;
+    transition: width .3s;
+}
+.nave-img {
+    width: 100%;
 }
 @keyframes nave-espacial {
     0% {
-        transform: translateY(177px);
+        transform: translateY(300px);
     }
     25% {
-        transform: translateY(-30px) translateX(50px) rotate(45deg);
+        transform: translateY(-30px) translateX(50px) rotate(90deg);
     }
     50% {
-        transform: translateY(-300px) translateX(507px) rotate(90deg);
+        transform: translateY(30px) translateX(707px) rotate(180deg);
     }
     75% {
-        transform: translateY(0) translateX(300px) rotate(135deg);
+        transform: translateY(280px) translateX(690px) rotate(270deg);
     }
     100% {
-        transform: translateY(177px);
+        transform: translateY(300px) rotate(360deg);
     }
 }
