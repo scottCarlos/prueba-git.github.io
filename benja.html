@@ -7,7 +7,8 @@
     <title>prueba</title>
 </head>
 <body>
-    <div class="contenedor1">
+    <div class="contenedor contenedor1">
+        <h2>INTERACTUA CON LOS CIRCULOS</h2>
         <div class="form-circles">
             <label for="input">Ingrese la cantidad de circulos</label>
             <input type="number" id="input">
@@ -15,21 +16,27 @@
         </div>
         <div class="contenedor-circle"></div>
     </div>
-    <div class="contenedor2">
+    <div class="contenedor contenedor2">
+        <h2>INTERACTUA CON LA NAVE</h2>
         <div class="nave">
             <img class="nave-img" src="img/nave.png" alt="NAVE" srcset="">
         </div>
     </div>
-    <div class="contenedor3">
-        <div class="left">
-            <div class="intentos"></div>
-            <input type="text" id="select" maxlength="1">
-            <button id="boton-ahorcados">PROBAR</button>
-            <button id="iniciar">INICIAR</button>
+    <div class="contenedor contenedor3">
+        <div class="c3-head">
+            <h2>JUEGO DE AHORCADOS!</h2>
         </div>
-        <div class="right">
-            <img src="" alt="" class="img-ahorcados">
-            <div id="contenido-ahorcados"></div>
+        <div class="c3-body">
+            <div class="left">
+                <div class="intentos"></div>
+                <input type="text" id="select" maxlength="1" placeholder="INGRESE UNA LETRA">
+                <button id="boton-ahorcados" class="btn-desaparecer">PROBAR</button>
+                <button id="iniciar">INICIAR</button>
+                <div id="contenido-ahorcados"></div>
+            </div>
+            <div class="right">
+                <img src="img/ahorcados-1.png" alt="" class="img-ahorcados">
+            </div>
         </div>
     </div>
     <script src="main.js"></script>

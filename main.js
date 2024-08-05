@@ -71,6 +71,7 @@ const select = document.getElementById("select");
 select.readOnly = true;
 const buttonIniciar = document.getElementById("iniciar");
 const respuesta = document.getElementById("contenido-ahorcados");
+const imgAhorcados = document.querySelector (".img-ahorcados");
 const palabrasAleatorias = ["manzana", "pera", "cuchillo", "platano", "mandarina"];
 const letrasEncontradas = [];
 let palabraSecreta;
@@ -79,38 +80,17 @@ let intentos;
 const refresh = () => {
     select.value = "";
 }
-const iniciarJuego = () => {
-    refresh();
-    respuesta.previousElementSibling.setAttribute("src", "img/ahorcados-1.png");
-    select.readOnly = false;
+const elegirPalabra = () => {
     aleatorio = Math.floor(Math.random() * palabrasAleatorias.length);
     palabraSecreta = palabrasAleatorias[aleatorio];
     intentos = palabraSecreta.length;
-    palabraHallada = "";
-    for(let i = 0; i < palabraSecreta.length; i++) {
-        palabraHallada += '_';
-    }
-    letrasEncontradas.splice(0, palabraSecreta.length);
-    respuesta.innerHTML = palabraHallada;
-    select.previousElementSibling.innerHTML = `Intentos: ${intentos}`;
 }
-
-buttonIniciar.addEventListener('click', iniciarJuego);
-const ahorcados = () => {
-    if (intentos != 0) {
-        if (intentos == Math.round(palabraSecreta.length/2 )+ 1) {
-            respuesta.previousElementSibling.setAttribute("src", "img/ahorcados-2.png");
+const recorrerCadena =(i) => {
+    if (i == 0) {
+        for(let i = 0; i < palabraSecreta.length; i++) {
+            palabraHallada += '_';
         }
-        palabraHallada = "";
-        letra = select.value;
-        refresh();
-        if (palabraSecreta.includes(letra) == true && letra != '') {
-            if (letrasEncontradas.includes(letra) == false) {
-                letrasEncontradas.push(letra);
-            }
-        }   else if (palabraSecreta.includes(letra) == false) {
-            intentos--;
-        }
+    }   else {
         for (let i = 0; i < palabraSecreta.length; i++) {
             presente = false;
             for (let j = 0; j < letrasEncontradas.length; j++) {
@@ -125,23 +105,61 @@ const ahorcados = () => {
                 palabraHallada += '_';
             }
         }
-        if (palabraHallada == palabraSecreta) {
-            alert(`Hallaste la palabra!, es ${palabraSecreta}`);
-            iniciarJuego();
+    }
+}
+const iniciarJuego = () => {
+    refresh();
+    buttonIniciar.innerHTML = "REINICIAR";
+    select.nextElementSibling.classList.remove("btn-desaparecer");
+    imgAhorcados.setAttribute("src", "img/ahorcados-1.png");
+    select.readOnly = false;
+    elegirPalabra();
+    palabraHallada = "";
+    recorrerCadena(0);
+    letrasEncontradas.splice(0, palabraSecreta.length);
+    respuesta.innerHTML = palabraHallada;
+    select.previousElementSibling.innerHTML = `Intentos: ${intentos}`;
+}
+const estadoInicial = () => {
+    select.nextElementSibling.classList.add("btn-desaparecer");
+    select.readOnly = true;
+}
+const ahorcados = () => {
+    if (intentos != 0) {
+        if (intentos == Math.round(palabraSecreta.length/2 )+ 1) {
+            imgAhorcados.setAttribute("src", "img/ahorcados-2.png");
         }
+        palabraHallada = "";
+        letra = select.value;
+        refresh();
+        if (palabraSecreta.includes(letra) == true && letra != '') {
+            if (letrasEncontradas.includes(letra) == false) {
+                letrasEncontradas.push(letra);
+            }
+        }   else if (palabraSecreta.includes(letra) == false) {
+            intentos--;
+        }
+        recorrerCadena(1);
         if(intentos == 0) {
             intentos = 0;
             alert("PERDISTE!");
             select.readOnly = true;
-            respuesta.previousElementSibling.setAttribute("src", "img/ahorcados-3.png");
-            buttonIniciar.innerHTML = "VOLVER A INICIAR";
+            buttonIniciar.innerHTML = "VOLVER A INTENTAR";
+            imgAhorcados.setAttribute("src", "img/ahorcados-3.png");
+            estadoInicial();
         }
         respuesta.innerHTML = `${palabraHallada}`;
     }   else{
         select.disable = true;
     }
+    if (palabraHallada == palabraSecreta) {
+        alert(`Hallaste la palabra!, es ${palabraSecreta}`);
+        estadoInicial();
+    }
     select.previousElementSibling.innerHTML = `Intentos: ${intentos}`;
 }
+
+buttonIniciar.addEventListener('click', iniciarJuego);
 select.nextElementSibling.addEventListener('click', ahorcados);
 select.addEventListener('keypress', ahorcados);
 
