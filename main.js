@@ -109,6 +109,7 @@ const recorrerCadena =(i) => {
 }
 const iniciarJuego = () => {
     refresh();
+    select.placeholder = "INGRESE UNA LETRA";
     buttonIniciar.innerHTML = "REINICIAR";
     select.nextElementSibling.classList.remove("btn-desaparecer");
     imgAhorcados.setAttribute("src", "img/ahorcados-1.png");
@@ -122,15 +123,17 @@ const iniciarJuego = () => {
 }
 const estadoInicial = () => {
     select.nextElementSibling.classList.add("btn-desaparecer");
+    select.placeholder = "INICIE EL JUEGO";
     select.readOnly = true;
 }
 const ahorcados = () => {
-    if (intentos != 0) {
-        if (intentos == Math.round(palabraSecreta.length/2 )+ 1) {
+    if (intentos > 1) {
+        if (intentos == Math.round(palabraSecreta.length/2 )) {
             imgAhorcados.setAttribute("src", "img/ahorcados-2.png");
         }
         palabraHallada = "";
         letra = select.value;
+        letra = letra.toLowerCase();
         refresh();
         if (palabraSecreta.includes(letra) == true && letra != '') {
             if (letrasEncontradas.includes(letra) == false) {
@@ -140,26 +143,100 @@ const ahorcados = () => {
             intentos--;
         }
         recorrerCadena(1);
-        if(intentos == 0) {
-            intentos = 0;
-            alert("PERDISTE!");
-            select.readOnly = true;
-            buttonIniciar.innerHTML = "VOLVER A INTENTAR";
-            imgAhorcados.setAttribute("src", "img/ahorcados-3.png");
-            estadoInicial();
-        }
         respuesta.innerHTML = `${palabraHallada}`;
     }   else{
-        select.disable = true;
+        intentos = 0;
+        select.readOnly = true;
+        alert("PERDISTE!");
+        buttonIniciar.innerHTML = "VOLVER A INTENTAR";
+        imgAhorcados.setAttribute("src", "img/ahorcados-3.png");
+        estadoInicial();
     }
+    select.previousElementSibling.innerHTML = `Intentos: ${intentos}`;
     if (palabraHallada == palabraSecreta) {
         alert(`Hallaste la palabra!, es ${palabraSecreta}`);
         estadoInicial();
     }
-    select.previousElementSibling.innerHTML = `Intentos: ${intentos}`;
 }
-
 buttonIniciar.addEventListener('click', iniciarJuego);
 select.nextElementSibling.addEventListener('click', ahorcados);
 select.addEventListener('keypress', ahorcados);
 
+
+
+
+
+
+//contenedor-4
+const consola = document.querySelector(".console");
+const buttonNumber = document.querySelectorAll(".btn-number");
+const eliminarAll = document.getElementById("btn-delete-all");
+const eliminar = document.getElementById("btn-delete");
+const functionCalculator = document.querySelectorAll(".function-calculator");
+const decimal = document.getElementById("decimal");
+const ans = document.getElementById("ANS");
+const equal = document.getElementById("equal");
+var ansvar = '';
+
+buttonNumber.forEach((elemento) => {
+    elemento.addEventListener('click', () => {
+        num = elemento.innerHTML;
+        numeroConsola = consola.lastElementChild.innerHTML;
+        numeroConsola += num;
+        consola.lastElementChild.innerHTML = numeroConsola;
+    })
+})
+const refrescarConsola = (elemento) => {
+    elemento.innerHTML = '';
+}
+functionCalculator.forEach((elemento) => {
+    elemento.addEventListener('click', () => {
+        if (consola.lastElementChild.innerHTML != '' && consola.firstElementChild.innerHTML == '') {
+            numeroConsola = consola.lastElementChild.innerHTML;
+            refrescarConsola(consola.lastElementChild);
+            numeroConsola += elemento.innerHTML;
+            consola.firstElementChild.innerHTML = numeroConsola;
+        }
+    })
+})
+const realizarOperacion = (operador, num1, num2) => {
+    if (operador == '+') {
+        return num1 + num2;
+    }   else if (operador == '-') {
+        return num1 - num2;
+    }   else if (operador == 'X') {
+        return num1 * num2;
+    }   else if (operador == '/') {
+        return num1 / num2;
+    }
+}
+
+equal.addEventListener('click', ()=> {
+    num1 = consola.firstElementChild.innerHTML;
+    num2 = parseFloat(consola.lastElementChild.innerHTML);
+    operador = num1[num1.length - 1];
+    num1 = parseFloat(num1.slice(0, -1));
+    refrescarConsola(consola.firstElementChild);
+    ansvar = realizarOperacion(operador, num1, num2).toString();
+    consola.lastElementChild.innerHTML = ansvar;
+})
+eliminar.addEventListener('click', () => {
+    consola.lastElementChild.innerHTML = consola.lastElementChild.innerHTML.slice(0,-1);
+})
+eliminarAll.addEventListener('click', () => {
+    if (consola.lastElementChild.innerHTML == '') {
+        consola.firstElementChild.innerHTML = '';
+    }   else {
+        consola.lastElementChild.innerHTML = '';
+    }
+})
+ans.addEventListener('click', () => {
+    consola.lastElementChild.innerHTML = ansvar;
+})
+decimal.addEventListener('click', () => {
+    if (consola.lastElementChild.innerHTML.includes('.') == false) {
+        num = consola.lastElementChild.innerHTML;
+        num += '.';
+        consola.lastElementChild.innerHTML = num;
+    }
+})

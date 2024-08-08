@@ -73,7 +73,7 @@ h2 {
 }
 .world-image {
     width: 100%;
-
+    filter: drop-shadow(1px 1px 10px #000);
 }
 
 
@@ -140,7 +140,11 @@ h2 {
     gap: 60px;
 }
 .left {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
 }
 #select {
     width: 160px;
@@ -148,14 +152,78 @@ h2 {
     font-size: 15px;
 }
 #contenido-ahorcados {
-    margin-top: 50px;
     letter-spacing: 8px;
     font-size: 30px;
 }
-.btn-desaparecer {
+.intentos {
+    font-size:20px;
+}
+.btn-ahorcados {
+    border: none;
+    background: #123;
+    color: #fff;
+    font-size: 15px;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.btn-ahorcados.btn-desaparecer {
     display: none;
 }
 .img-ahorcados {
     width: 300px;
     height: 250px;
+}
+
+
+
+
+
+.contenedor4 {
+    background-color: #123;
+    padding: 70px 0;
+}
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    border: 3px solid #fff;
+    height: 500px;
+    border-radius: 80px;
+    max-width: 380px;
+    margin: auto;
+    padding: 50px 50px 80px;
+}
+.console {
+    background-color: #0f0;
+    border-radius: 30px;
+    height: 200px;
+    border: 3px double #fff;
+}
+.console div {
+    height: 40px;
+    font-size: 25px;
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+.buttons-calculator {
+    height: 100%;
+    border: 3px double #fff;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-gap: 5px 10px
+}
+.buttons-calculator button {
+    background-color: #fff;
+    border: none;
+    font-size: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+#btn-delete-all {
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
