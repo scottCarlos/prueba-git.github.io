@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+body {
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgb(76, 152, 240) 100%);
+}
+.name {
+    color: #fff;
+    text-align: center;
+    margin-top: 40px;
+    letter-spacing: 15px;
+}
+.container {
+    padding: 50px 50px 40px;
+    margin: 30px auto 0;
+    background: white;
+    max-width: 350px;
+    border-radius: 30px;
+    background: rgb(46, 52, 80);
+    box-shadow: 1px 1px 10px #999;
+}
+.consola {
+    height: 80px;
+    background: #c8ffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: end;
+    padding: 0 20px 0;
+    border-radius: 10px;
+    position: relative;
+    font-size: 25px;
+}
+#consola-operacion {
+    position: absolute;
+    top: -4px;
+    right: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+#consola-ans {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    font-size: 12px;
+    font-weight: 500;
+}
+.botones {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 40px);
+    grid-gap: 20px 10px;
+}
+.button-all {
+    border: none;
+    background: rgb(233, 245, 75);
+    color: #000;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    border: .1px solid #000;
+}
+#button-ac {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+._consola {
+    height: 27px;
+}

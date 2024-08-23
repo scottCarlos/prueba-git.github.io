@@ -240,3 +240,17 @@ decimal.addEventListener('click', () => {
         consola.lastElementChild.innerHTML = num;
     }
 })
+
+
+
+
+
+
+
+
+//contenedor5
+const enlace = document.querySelector(".contenedor5");
+enlace.style.cursor = "pointer";
+enlace.addEventListener('click', () => {
+    window.location.assign("https://youtube.com");
+})
