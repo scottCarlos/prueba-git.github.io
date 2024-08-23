@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="calculadora.css">
+    <link rel="shortcut icon" href="img/calculadora-icon.png" type="image/x-icon">
     <title>Calculadora</title>
 </head>
 <body>
     <h1 class="name">CALCULADORA CON POO</h1>
     <div class="container">
         <div class="consola">
-            <div id="consola-operacion">operation</div>
-            <div class="console-top">top</div>
-            <div class="console-bottom">bottom</div>
+            <div id="consola-operacion"></div>
+            <div class="_consola" id="consola-top"></div>
+            <div class="_consola" id="consola-down"></div>
+            <div id="consola-ans"></div>
         </div>
         <div class="botones">
-            <button class="button-all button-ac">AC</button>
-            <button class="button-all button-delete">←</button>
+            <button class="button-all" id="button-ac">AC</button>
+            <button class="button-all" id="button-delete">←</button>
             <button class="button-all button-operation">/</button>
             <button class="button-all button-number">7</button>
             <button class="button-all button-number">8</button>
@@ -30,11 +32,12 @@
             <button class="button-all button-number">2</button>
             <button class="button-all button-number">3</button>
             <button class="button-all button-operation">+</button>
-            <button class="button-all button-ans">ANS</button>
+            <button class="button-all" id="button-ans">ANS</button>
             <button class="button-all button-number">0</button>
-            <button class="button-all button-decimal">.</button>
-            <button class="button-all button-equal">=</button>
+            <button class="button-all" id="button-decimal">.</button>
+            <button class="button-all" id="button-equal">=</button>
         </div>
     </div>
+    <script src="calculadora.js"></script>
 </body>
 </html>
