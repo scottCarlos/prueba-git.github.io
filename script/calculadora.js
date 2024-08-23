@@ -6,6 +6,7 @@ class Calculadora {
         this.ans = _consolaAns;
     }
     operacion(valor) {
+        if (this.down.textContent == '') this.down.textContent = 0;
         if (this.operator.textContent == "") {
             if (this.up.textContent == '') {
                 this.up.textContent = this.down.textContent;
@@ -56,9 +57,9 @@ class Calculadora {
                 resultado = number1 / number2;
             }
             resultado = resultado.toString();
-            if (resultado.length > 14) {
+            if (resultado.length > 10) {
                 resultado = parseFloat(resultado);
-                resultado = resultado.toFixed(14);
+                resultado = resultado.toFixed(10);
                 resultado = resultado.toString();
             }
             this.down.textContent = resultado;

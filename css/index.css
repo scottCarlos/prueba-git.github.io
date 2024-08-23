@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Karla", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    height: 80px;
+    gap: 40px;
+}
+.nav-img {
+    letter-spacing: 15px;
+    font-size: 25px;
+    color: white;
+    flex-grow: 1;
+    text-align: center;
+}
+.nav-item a {
+    text-decoration: none;
+    color: #fff;
+    transition: .2s color;
+}
+.nav-item a:hover {
+    color: #aaa;
+}
+.nav-links {
+    flex-grow: 2;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+.carrusel {
+    position: relative;
+    width: 80%;
+    margin: auto;
+}
+.cursor-left svg, .cursor-right svg {
+    width: 100%;
+}
+.cursor-direction {
+    height: 100%;
+    width: 80px;
+    background-color: #aaa4;
+    position: absolute;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: .2s ease;
+    cursor: pointer;
+}
+.carrusel-content {
+    overflow: hidden;
+    height: 545px;
+}
+.carrusel-img {
+    display: flex;
+    flex-wrap: nowrap;
+    transition: .3s ease-out;
+    animation-name: _carrusel;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    object-fit: cover;
+    height: 100%;
+}
+._img {
+    width: 100%;
+    object-fit: cover;
+}
+.cursor-direction:hover {
+    background-color: #aaa9;
+}
+.cursor-left {
+    top: 0;
+    left: 0;
+}
+.cursor-right {
+    top: 0;
+    right: 0;
+}

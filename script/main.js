@@ -28,7 +28,7 @@ const inputFuction = () => {
         var color = colorHexadecimal();
         div.style.backgroundColor = `#${color}`;    
         var image = document.createElement("IMG");
-        image.setAttribute("src", "img/mundo.png");
+        image.setAttribute("src", "../img/mundo.png");
         image.classList.add("world-image");
         div.appendChild(image);
         fragmento.appendChild(div);

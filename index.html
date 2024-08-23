@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Home</title>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-img">
+            JAVASCRIPT
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item"><a href="public/procesos.html">PROYECTOS 1</a></li>
+            <li class="nav-item"><a href="public/calculadora.html">CALCULADORA</a></li>
+        </ul>
+    </nav>
+    <div class="carrusel">
+        <div class="carrusel-content">
+            <div class="carrusel-img">
+                <img class="_img" width="1000px" src="../img/fondo1.png" alt="img1">
+                <img class="_img" src="../img/fondo2.png" alt="img2">
+                <img class="_img" src="../img/fondo3.png" alt="img3">
+                <img class="_img" src="../img/fondo4.png" alt="img4">
+                <img class="_img" src="../img/fondo5.png" alt="img5">
+            </div>
+        </div>
+        <div class="cursor-direction cursor-left">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+            </svg>
+        </div>
+        <div class="cursor-direction cursor-right">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/>
+            </svg>
+        </div>
+    </div>
+    <script>
+        const cursorLeft = document.querySelector('.cursor-left');
+        const cursorRight = document.querySelector('.cursor-right');
+        const carruselImg = document.querySelector('.carrusel-img');
+        const cntImg = document.querySelectorAll('._img');
+        carruselImg.style.width = `${cntImg.length * 100}%`;
+        let widhtImg = 100 / cntImg.length;
+        let variable = 0;
+        let counter = 0;
+        function moveToRight(){
+            variable += widhtImg;
+            counter ++;
+            if (counter == cntImg.length) {
+                variable = 0;
+                counter = 0;
+            }
+            carruselImg.style.transform = `translateX(-${variable}%)`;
+        }
+        function moveToLeft() {
+            if (counter == 0) {
+                counter = cntImg.length;
+                variable = 100;
+            }
+            variable -= widhtImg;
+            counter --;
+            carruselImg.style.transform = `translateX(-${variable}%)`;
+        }
+        
+        cursorLeft.addEventListener('click', () => {
+            moveToLeft();
+        })
+        cursorRight.addEventListener('click', () => {
+            moveToRight();
+        })
+        setInterval(() => {
+            moveToRight();
+        }, 3500);
+    </script>
+</body>
+</html>
