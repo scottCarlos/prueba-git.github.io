@@ -24,6 +24,7 @@
     text-align: center;
 }
 .nav-item {
+    border: 1px solid #fff;
     width: 150px;
     text-align: center;
 }
@@ -41,6 +42,7 @@
 }
 .nav-dropdown {
     position: relative;
+
 }
 #angle-rotation {
     transition: all .2s;
@@ -49,7 +51,7 @@
 .dropdown {
     display: flex;
     position: absolute;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
     z-index: 3;
@@ -85,7 +87,7 @@
 .dropdown-item:hover {
     background-color: #aaa;
 }
-.dropdown-item a {
+.dropdown-item a, .dropdown-item a:active {
     color: #000;
 }
 .dropdown-item:hover a{
