@@ -7,6 +7,7 @@
     <title>Home</title>
 </head>
 <body>
+    <div class="navigator-close"></div>
     <nav class="nav">
         <div class="nav-img">
             JAVASCRIPT
@@ -14,16 +15,28 @@
         <ul class="nav-links">
             <li class="nav-item"><a href="public/procesos.html">PROYECTOS 1</a></li>
             <li class="nav-item"><a href="public/calculadora.html">CALCULADORA</a></li>
+            <li class="nav-dropdown">
+                <div id="angle" class="angle">
+                    <a href="#">DROPDOWN</a>
+                    <i id="angle-rotation" class="fa-solid fa-angle-down"></i>
+                </div>
+                <ul class="dropdown">
+                    <li class="dropdown-item"><a href="#">lista 1</a></li>
+                    <li class="dropdown-item"><a href="#">lista 2</a></li>
+                    <li class="dropdown-item"><a href="#">lista 3</a></li>
+                    <li class="dropdown-item"><a href="#">lista 4</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <div class="carrusel">
         <div class="carrusel-content">
             <div class="carrusel-img">
                 <img class="_img" width="1000px" src="../img/fondo1.png" alt="img1">
-                <img class="_img" src="../img/fondo2.png" alt="img2">
-                <img class="_img" src="../img/fondo3.png" alt="img3">
-                <img class="_img" src="../img/fondo4.png" alt="img4">
-                <img class="_img" src="../img/fondo5.png" alt="img5">
+                <img class="_img" src="img/fondo2.png" alt="img2">
+                <img class="_img" src="img/fondo3.png" alt="img3">
+                <img class="_img" src="img/fondo4.png" alt="img4">
+                <img class="_img" src="img/fondo5.png" alt="img5">
             </div>
         </div>
         <div class="cursor-direction cursor-left">
@@ -74,6 +87,23 @@
         setInterval(() => {
             moveToRight();
         }, 3500);
+
+
+        const dropdown = document.querySelector('.dropdown');
+        const angle = document.getElementById('angle');
+        const angleRotation = document.getElementById('angle-rotation')
+        const navigatorClose = document.querySelector('.navigator-close');
+        angle.addEventListener('click', () => {
+            dropdown.style.height = '175px';
+            angleRotation.style.transform = 'rotate(180deg)';
+            navigatorClose.classList.toggle('active');
+        })
+        navigatorClose.addEventListener('click', () => {
+            dropdown.style.height = '0';
+            angleRotation.style.transform = 'rotate(0)';
+            navigatorClose.classList.remove('active');
+        })
     </script>
+    <script src="https://kit.fontawesome.com/8d1aadf525.js" crossorigin="anonymous"></script>
 </body>
 </html>
