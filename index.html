@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="public/css/index.css">
+    <link rel="shortcut icon" href="public/img/fav-icon.png" type="image/x-icon">
     <title>Home</title>
 </head>
 <body>
-    <div class="navigator-close"></div>
     <nav class="nav">
         <div class="nav-img">
             JAVASCRIPT
         </div>
         <ul class="nav-links">
-            <li class="nav-item"><a href="public/procesos.html">PROYECTOS 1</a></li>
-            <li class="nav-item"><a href="public/calculadora.html">CALCULADORA</a></li>
+            <li class="nav-item"><a class="a-link" href="views/procesos.html">PROYECTOS 1</a></li>
+            <li class="nav-item"><a class="a-link" href="views/calculadora.html">CALCULADORA</a></li>
             <li class="nav-item nav-dropdown">
-                <div id="angle" class="angle">
-                    <a href="#">DROPDOWN</a>
+                <div id="button-dropdown" class="angle">
+                    <a class="a-link" href="#">COFLA</a>
                     <i id="angle-rotation" class="fa-solid fa-angle-down"></i>
                 </div>
                 <ul class="dropdown">
-                    <li class="dropdown-item"><a href="#">lista 1</a></li>
+                    <li class="dropdown-item"><a href="views/problemas_cofla/problema1.html">Problema 1</a></li>
                     <li class="dropdown-item"><a href="#">lista 2</a></li>
                     <li class="dropdown-item"><a href="#">lista 3</a></li>
                     <li class="dropdown-item"><a href="#">lista 4</a></li>
@@ -32,11 +32,11 @@
     <div class="carrusel">
         <div class="carrusel-content">
             <div class="carrusel-img">
-                <img class="_img" width="1000px" src="../img/fondo1.png" alt="img1">
-                <img class="_img" src="img/fondo2.png" alt="img2">
-                <img class="_img" src="img/fondo3.png" alt="img3">
-                <img class="_img" src="img/fondo4.png" alt="img4">
-                <img class="_img" src="img/fondo5.png" alt="img5">
+                <img class="_img" src="public/img/fondo1.png" alt="img1">
+                <img class="_img" src="public/img/fondo2.png" alt="img2">
+                <img class="_img" src="public/img/fondo3.png" alt="img3">
+                <img class="_img" src="public/img/fondo4.png" alt="img4">
+                <img class="_img" src="public/img/fondo5.png" alt="img5">
             </div>
         </div>
         <div class="cursor-direction cursor-left">
@@ -89,20 +89,24 @@
         }, 3500);
 
 
-        const dropdown = document.querySelector('.dropdown');
-        const angle = document.getElementById('angle');
-        const angleRotation = document.getElementById('angle-rotation')
-        const navigatorClose = document.querySelector('.navigator-close');
-        angle.addEventListener('click', () => {
-            dropdown.style.height = '175px';
-            angleRotation.style.transform = 'rotate(180deg)';
-            navigatorClose.classList.toggle('active');
-        })
-        navigatorClose.addEventListener('click', () => {
-            dropdown.style.height = '0';
-            angleRotation.style.transform = 'rotate(0)';
-            navigatorClose.classList.remove('active');
-        })
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttonDropdown = document.getElementById('button-dropdown');
+            const dropdown = document.querySelector('.dropdown');
+            const angleRotation = document.getElementById('angle-rotation')
+
+            buttonDropdown.addEventListener('click', (event) => {
+                dropdown.classList.toggle('show');
+                angleRotation.classList.toggle('rotate')
+                event.stopPropagation();
+            });
+
+            window.addEventListener('click', (event) => {
+                if (!buttonDropdown.contains(event.target) && !dropdown.contains(event.target)) {
+                    dropdown.classList.remove('show');
+                    angleRotation.classList.toggle('rotate')
+                }
+            });
+        });
     </script>
     <script src="https://kit.fontawesome.com/8d1aadf525.js" crossorigin="anonymous"></script>
 </body>

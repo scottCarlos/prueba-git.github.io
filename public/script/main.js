@@ -28,7 +28,7 @@ const inputFuction = () => {
         var color = colorHexadecimal();
         div.style.backgroundColor = `#${color}`;    
         var image = document.createElement("IMG");
-        image.setAttribute("src", "../img/mundo.png");
+        image.setAttribute("src", "../public/img/mundo.png");
         image.classList.add("world-image");
         div.appendChild(image);
         fragmento.appendChild(div);
@@ -112,7 +112,7 @@ const iniciarJuego = () => {
     select.placeholder = "INGRESE UNA LETRA";
     buttonIniciar.innerHTML = "REINICIAR";
     select.nextElementSibling.classList.remove("btn-desaparecer");
-    imgAhorcados.setAttribute("src", "img/ahorcados-1.png");
+    imgAhorcados.setAttribute("src", "../public/img/ahorcados-1.png");
     select.readOnly = false;
     elegirPalabra();
     palabraHallada = "";
@@ -129,7 +129,7 @@ const estadoInicial = () => {
 const ahorcados = () => {
     if (intentos > 1) {
         if (intentos == Math.round(palabraSecreta.length/2 )) {
-            imgAhorcados.setAttribute("src", "img/ahorcados-2.png");
+            imgAhorcados.setAttribute("src", "../public/img/ahorcados-2.png");
         }
         palabraHallada = "";
         letra = select.value;
@@ -149,7 +149,7 @@ const ahorcados = () => {
         select.readOnly = true;
         alert("PERDISTE!");
         buttonIniciar.innerHTML = "VOLVER A INTENTAR";
-        imgAhorcados.setAttribute("src", "img/ahorcados-3.png");
+        imgAhorcados.setAttribute("src", "../public/img/ahorcados-3.png");
         estadoInicial();
     }
     select.previousElementSibling.innerHTML = `Intentos: ${intentos}`;

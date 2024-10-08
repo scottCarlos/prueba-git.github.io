@@ -24,7 +24,6 @@
     text-align: center;
 }
 .nav-item {
-    border: 1px solid #fff;
     width: 150px;
     text-align: center;
 }
@@ -48,6 +47,12 @@
     transition: all .2s;
     color: #fff;
 }
+.a-link:hover {
+    color: #aaa;
+}
+.angle:hover #angle-rotation {
+    color: #aaa;
+}
 .dropdown {
     display: flex;
     position: absolute;
@@ -62,19 +67,10 @@
     transition: height .2s ease-in;
     overflow: hidden;
 }
-.navigator-close {
-    display: none;
-    position: relative;
+.dropdown.show {
+    height: 175px;
 }
-.navigator-close.active {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 2;
-}
+
 .dropdown-item {
     list-style: none;
     width: 100%;
@@ -112,6 +108,9 @@
     justify-content: center;
     transition: .2s ease;
     cursor: pointer;
+}
+.fa-solid.fa-angle-down.rotate {
+    transform: rotate(180deg);
 }
 .carrusel-content {
     overflow: hidden;

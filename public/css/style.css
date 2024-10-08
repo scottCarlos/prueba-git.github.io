@@ -81,7 +81,7 @@ h2 {
 .contenedor2 {
     padding: 30px 0;
     margin: 60px auto;
-    background-image: url(../img/fondo.png);
+    background-image: url(../../public/img/fondo.png);
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
